@@ -1,6 +1,9 @@
 import { Button, StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import React, { useState } from 'react'
+
 import COLORS from '../../constants/Colors'
+import FONTS from '../../constants/Fonts'
+
 import Card from '../Card'
 import Input from '../Input'
 import NumberContainer from '../NumberContainer'
@@ -35,7 +38,7 @@ const StartGameScreen = ({ onStartGame }) => {
       <View style={styles.container}>
         <Text style={styles.title}>Comenzar Juego</Text>
         <Card style={styles.inputContainer}>
-          <Text style={styles.inputDectiptionText}>Elija un numero</Text>
+          <Text style={styles.inputDescriptionText}>Elija un numero</Text>
           <Input style={styles.input}
             blurOnSubmit
             autoCapitalize='none'
@@ -47,7 +50,7 @@ const StartGameScreen = ({ onStartGame }) => {
           />
           <View style={styles.buttonsContainer}>
             <View style={styles.button}>
-              <Button title="Limpiar" onPress={resetInputHandler} color={COLORS.accent} />
+              <Button title="Limpiar" onPress={resetInputHandler} color={COLORS.delete} />
             </View>
             <View style={styles.button}>
               <Button title="Confirmar" onPress={confirmInputHandler} color={COLORS.primary} />
@@ -56,10 +59,11 @@ const StartGameScreen = ({ onStartGame }) => {
         </Card>
         {confirmed &&
           <Card style={styles.selectedNumberContainer}>
-            <Text>Tu seleccion</Text>
+            <Text style={styles.inputDescriptionText} >Tu seleccion</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button title="Iniciar Juego" onPress={() => {
+            <Button color={COLORS.accent} title="Iniciar Juego" onPress={() => {
               onStartGame(selectedNumber)
+              
             }} />
           </Card>
         }
@@ -78,7 +82,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    marginVertical: 10
+    marginVertical: 20,
+    fontFamily: FONTS.latoBold,
+    color: COLORS.black
   },
   inputContainer: {
     width: 300,
@@ -86,12 +92,17 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center'
   },
-  inputDectiptionText: {
-    textAlign: 'center'
+  inputDescriptionText: {
+    textAlign: 'center',
+    fontFamily:FONTS.latoBold,
+    color:COLORS.black,
   },
   input: {
     width: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    color:COLORS.black,
+    fontFamily: FONTS.titles,
+    fontSize:18
   },
   buttonsContainer: {
     flexDirection: 'row',

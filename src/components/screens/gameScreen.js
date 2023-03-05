@@ -1,7 +1,9 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+
 import NumberContainer from '../NumberContainer';
 import Card from '../Card';
+import COLORS from '../../constants/Colors';
 
 const GameScreen = ({ userOption }) => {
 
@@ -22,8 +24,8 @@ const GameScreen = ({ userOption }) => {
       <Text>La suposicion del oponente</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <Button title='MAYOR' onPress={() => { }} />
-        <Button title='MENOR' onPress={() => { }} />
+        <Button color={COLORS.delete}title='MENOR' onPress={() => { }} />
+        <Button color={COLORS.green}title='MAYOR' onPress={() => { }} />
       </Card>
     </View>
   )
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding:20,
+    padding: 20,
     marginTop: 20,
     width: 300,
     maxWidth: '80%'
