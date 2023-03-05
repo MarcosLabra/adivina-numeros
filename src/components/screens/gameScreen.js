@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import NumberContainer from '../NumberContainer';
 import Card from '../Card';
 import COLORS from '../../constants/Colors';
+import FONTS from '../../constants/Fonts';
 
 const GameScreen = ({ userOption }) => {
 
@@ -21,7 +22,7 @@ const GameScreen = ({ userOption }) => {
 
   return (
     <View style={styles.screen}>
-      <Text>La suposicion del oponente</Text>
+      <Text style={styles.inputDescriptionText} >La suposicion del oponente</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <Button color={COLORS.delete}title='MENOR' onPress={() => { }} />
@@ -46,5 +47,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 300,
     maxWidth: '80%'
+  },
+  inputDescriptionText: {
+    textAlign: 'center',
+    fontFamily:FONTS.latoBold,
+    color:COLORS.black,
   }
 })
